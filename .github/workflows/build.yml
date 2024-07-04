@@ -15,14 +15,11 @@ jobs:
       - name: Get GitHub runner public ip address
         id: ip
         run: |
-          echo "ipv4=$(curl -s --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 40 https://api.ipify.org/\?format\=txt)"
-          echo "ipv4=${ipv4}" >> $GITHUB_ENV
-          echo "ipv4=${ipv4}" >> $GITHUB_OUTPUT
+          echo "ipv4=$(curl -s --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 40 https://api.ipify.org/\?format\=txt)" >> $GITHUB_OUTPUT
 
       - name: setup
         run: |
           echo "finished building app with agent ip output: ${{ steps.ip.outputs.ipv4 }}"
-          echo "finished building app with agent ip env: ${{ env.ipv4 }}"
 
       # WORKS
       # - name: Get GitHub runner public ip address
