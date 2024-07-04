@@ -15,7 +15,7 @@ jobs:
       - name: Get GitHub runner public ip address
         id: ip
         run: |
-          echo "ipv4=$(curl --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 40 https://api.ipify.org/\?format\=txt)" >> $env:GITHUB_OUTPUT
+          echo "ipv4=$(curl --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 40 https://api.ipify.org/?format=txt)" >> $env:GITHUB_OUTPUT
     
       - name: setup
         run: |
