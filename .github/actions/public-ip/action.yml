@@ -1,0 +1,23 @@
+name: 'Public ip address'
+description: 'returns the public ip address used by the github agent'
+inputs:
+  retry-times:
+    required: false
+    default: '10'
+  max-time:
+    required: false
+    default: '10'
+  retry-max-time:
+    required: false
+    default: '40'    
+outputs:
+  ipv4:
+    description: "Public v4 ip address"
+    value: ${{ steps.ip.outputs.ipv4 }}
+runs:
+  using: "composite"
+  steps:
+    - name: Get GitHub runner public ip address
+      id: ip
+      run: |
+        echo "ipv4=$(curl -s --max-time ${{ inputs.max-time }} --retry ${{ inputs.retry-times }} --retry-delay 0 --retry-max-time ${{ inputs.retry-max-time }} https://api.ipify.org/\?format\=txt)" >> $GITHUB_OUTPUT
