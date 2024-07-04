@@ -19,5 +19,6 @@ runs:
   steps:
     - name: Get GitHub runner public ip address
       id: ip
+      shell: bash
       run: |
         echo "ipv4=$(curl -s --max-time ${{ inputs.max-time }} --retry ${{ inputs.retry-times }} --retry-delay 0 --retry-max-time ${{ inputs.retry-max-time }} https://api.ipify.org/\?format\=txt)" >> $GITHUB_OUTPUT
