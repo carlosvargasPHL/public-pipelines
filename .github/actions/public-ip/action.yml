@@ -1,23 +1,23 @@
-name: 'Public ip address'
-description: 'returns the public ip address used by the github agent'
+name: "Public IP address"
+description: "returns the runner's public IP address"
 inputs:
   retry-times:
     required: false
-    default: '10'
+    default: "10"
   max-time:
     required: false
-    default: '10'
+    default: "10"
   retry-max-time:
     required: false
-    default: '40'    
+    default: "40"
 outputs:
   ipv4:
-    description: "Public v4 ip address"
+    description: "Runner's public v4 IP address"
     value: ${{ steps.ip.outputs.ipv4 }}
 runs:
   using: "composite"
   steps:
-    - name: Get GitHub runner public ip address
+    - name: Get GitHub runner public IP address
       id: ip
       shell: bash
       run: |
