@@ -12,9 +12,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Get GitHub runner public ip address
         id: ip
-        uses: ./.github/actions/public-ip                  
+        uses: ./.github/actions/public-ip
 
       - name: setup
         run: |
